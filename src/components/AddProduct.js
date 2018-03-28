@@ -7,12 +7,10 @@ class AddProduct extends Component {
        /* Initialize the state. */
        this.state = {
           newProduct: {
-              Name: '',
-              Variant: '',
-              PackSize: 0,
-              Key: '',
-              CategoryID: 0,
-              UnitID: 0
+              name: '',
+              pack_size: '',
+              category_id: '',
+              unit_id: 0
           }
         }
     
@@ -27,7 +25,8 @@ class AddProduct extends Component {
     /*Duplicating and updating the state */
     var state = Object.assign({}, this.state.newProduct); 
     state[key] = e.target.value;
-    state["Key"] = (state.Name+'_'+state.Variant+'_'+state.PackSize).toUpperCase();
+    // state["Key"] = (state.Name+'_'+state.Variant+'_'+state.PackSize).toUpperCase();
+    state["name"] = (state.Name).toUpperCase();
     // console.log(state);
     this.setState({newProduct: state });
   }
@@ -68,24 +67,20 @@ class AddProduct extends Component {
 
           <label> 
             Category: 
-            <input style={inputStyle}  type="number" onChange={(e)=>this.handleInput('CategoryID',e)} />
+            <input style={inputStyle}  type="number" onChange={(e)=>this.handleInput('category_id',e)} />
           </label>
           <label> 
             Name: 
             {/*On every keystroke, the handeInput method is invoked */}
-            <input style={inputStyle} type="text" onChange={(e)=>this.handleInput('Name',e)} />
-          </label>
-          <label> 
-            Variant: 
-            <input style={inputStyle}  type="text" onChange={(e)=>this.handleInput('Variant',e)} />
+            <input style={inputStyle} type="text" onChange={(e)=>this.handleInput('name',e)} />
           </label>
           <label> 
             Pack Size: 
-            <input style={inputStyle}  type="number" onChange={(e)=>this.handleInput('PackSize',e)} />
+            <input style={inputStyle}  type="number" onChange={(e)=>this.handleInput('pack_size',e)} />
           </label>
           <label>
             Unit:
-            <input style={inputStyle}  type="number" onChange={(e)=>this.handleInput('UnitID', e)}/>
+            <input style={inputStyle}  type="number" onChange={(e)=>this.handleInput('unit_id', e)}/>
           </label>
 
           <input style={inputStyle}  type="submit" value="Submit" />
